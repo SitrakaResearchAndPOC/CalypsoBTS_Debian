@@ -104,7 +104,7 @@ cd src
 ```
 nano target/firmware/Makefile
 ```
-"#uncomment CFLAGS += -DCONFIG_TX_ENABLE in the file target/firmware/Makefile"
+"#uncomment CFLAGS += -DCONFIG_TX_ENABLE in the file target/firmware/Makefile"  
 #ctrl+o return ctrl+x
 
 ```
@@ -154,7 +154,7 @@ git checkout 620fe497efa492feff4550e336cc3f8167715936
 ```
 nano target/firmware/Makefile
 ```
-#uncomment CFLAGS += -DCONFIG_TX_ENABLE
+#uncomment CFLAGS += -DCONFIG_TX_ENABLE  
 #ctrl+o return ctrl+x
 ```
 make -j4 HOST_layer23_CONFARGS=--enable-transceiver -e CROSS_TOOL_PREFIX=arm-none-eabi-
@@ -162,6 +162,183 @@ make -j4 HOST_layer23_CONFARGS=--enable-transceiver -e CROSS_TOOL_PREFIX=arm-non
 ```
 cd ..
 ```
+## Installation of libosmo-abis
+```
+git clone git://git.osmocom.org/libosmo-abis.git
+```
+```
+cd libosmo-abis/
+```
+```
+git checkout 39dffb6c29a8d78ba8527aa4ccc13f34d1c3b319
+```
+```
+autoreconf -i
+```
+```
+./configure
+```
+```
+make -j4
+```
+```
+make install
+```
+```
+ldconfig
+```
+```
+cd ..
+```
+## Installation of libosmo-netif
+```
+git clone git://git.osmocom.org/libosmo-netif.git
+```
+```
+cd libosmo-netif/
+```
+```
+git checkout 09c71b04f5a8d82515d0d4d541b8368b585dbd31
+```
+```
+autoreconf -i
+```
+```
+./configure
+```
+```
+make -j4
+```
+```
+make install
+```
+```
+ldconfig
+```
+```
+cd ..
+```
+
+## Installation of openbsc
+```
+git clone git://git.osmocom.org/openbsc.git
+```
+```
+cd openbsc/openbsc/
+```
+```
+git checkout d2550da76f9974bb1957f74c5d3eb75fdae923d9
+```
+```
+autoreconf -i
+```
+```
+./configure
+```
+```
+make -j4
+```
+```
+make install
+```
+```
+ldconfig
+```
+```
+cd ../..
+```
+## Installation of osmo-bts
+```
+git clone git://git.osmocom.org/osmo-bts.git
+```
+```
+cd osmo-bts/
+```
+```
+git checkout 59e7773055335a12d749faf84d88a8ed9fa0f201
+```
+```
+autoreconf -i
+```
+```
+./configure --enable-trx
+```
+```
+make -j4
+```
+```
+make install
+```
+```
+ldconfig
+```
+```
+cd ..
+```
+## Testing shell 0
+```
+cd /home/debian/osmocom/trx/src/ && \
+host/osmocon/osmocon -m c123xor -p /dev/ttyUSBX -c target/firmware/board/compal_e88/rssi.highram.bin
+```
+##
+## Finding phone
+```
+dmesg | grep tty
+```
+##
+## shell 1
+* With two phones : 
+```
+cd /home/debian/osmocom/trx/src/ && 
+host/osmocon/osmocon -m c123xor -p /dev/ttyUSBX -s /tmp/osmocom_l2 -c target/firmware/board/compal_e88/trx.highram.bin
+```
+Please replace X on /dev/ttyUSBX  with correct number and push power button of motorola phone 1
+* With only one phone : 
+```
+cd /home/debian/osmocom/trx/src/ && 
+host/osmocon/osmocon -m c123xor -p /dev/ttyUSB0 -c target/firmware/board/compal_e88/trx.highram.bin
+```
+Please replace X on /dev/ttyUSBX  with correct number and push power button of motorola phone
+##
+## shell 2
+* With two phones :
+```
+cd /home/debian/osmocom/trx/src/ && \
+host/osmocon/osmocon -m c123xor -p /dev/ttyUSBX -s /tmp/osmocom_l2.2 -c target/firmware/board/compal_e88/trx.highram.bin
+```
+Please replace X on /dev/ttyUSBX  with correct number and push power button of motorola phone 2
+
+* With one phone :
+ No command
+##
+## shell 3
+* With two phones : 
+```
+cd /home/debian/osmocom/trx/src/host/layer23/src/transceiver/ && \
+./transceiver -a X -2
+```
+* With one phone :
+```
+./transceiver -a X 
+```
+##
+## Before launching next shell, preparing configs
+* config file of osmo-bts
+```
+wget 
+``` 
+* config file of open-bsc
+* config  
+
+
+
+
+
+
+
+
+
+
 
 
 
