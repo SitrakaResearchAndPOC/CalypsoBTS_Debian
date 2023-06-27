@@ -43,6 +43,7 @@ debian ALL=(ALL:ALL) ALL
  deb http://deb.debian.org/debian/ buster main contrib
  deb-src http://deb.debian.org/debian/ buster main contrib
 ```
+## Installation of dependencies
 ```
 apt update
 ```
@@ -52,14 +53,40 @@ sudo apt-get install libtool shtool automake dahdi-source libssl-dev sqlite3 lib
 ```
 sudo apt install autoconf automake build-essential ccache cmake cpufrequtils doxygen ethtool g++ git inetutils-tools libboost-all-dev libncurses5 libncurses5-dev libusb-1.0-0 libusb-1.0-0-dev libusb-dev python3-dev python3-mako python3-numpy python3-requests python3-scipy python3-setuptools python3-ruamel.yaml
 ```
+## Creation of repository osmocom
 ```
 mkdir osmocom
 ```
 ```
 cd osmocom
 ```
+## Installation of libosmocore
 ```
 git clone git://git.osmocom.org/libosmocore.git
 ```
+```
+cd libosmocore/
+```
+git checkout cf70aa0c40c574c32b832454f725cc37459c5d8d
+```
+```
+autoreconf -i
+```
+```
+./configure
+```
+```
+make -j4
+```
+```
+make install
+```
+```
+ldconfig -i
+```
+```
+cd .. 
+```
+
 
 
