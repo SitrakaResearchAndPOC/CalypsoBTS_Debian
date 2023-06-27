@@ -101,16 +101,68 @@ git checkout 4f677e6ba8434dab376495cd996d140548fa6e93
 ```
 cd src
 ```
-"#uncomment CFLAGS += -DCONFIG_TX_ENABLE in :"
 ```
 nano target/firmware/Makefile
 ```
+"#uncomment CFLAGS += -DCONFIG_TX_ENABLE in the file target/firmware/Makefile"
+#ctrl+o return ctrl+x
+
 ```
 make -j4 -e CROSS_TOOL_PREFIX=arm-none-eabi-
 ```
 ```
 cd ../..
 ```
+## Installation of libosmo-dsp
+```
+git clone git://git.osmocom.org/libosmo-dsp.git
+```
+```
+cd libosmo-dsp/
+```
+```
+git checkout 551b9752bcd5d3d21bb2df0736b1801bda3d0d10
+```
+```
+autoreconf -i
+```
+```
+./configure
+```
+```
+make -j4
+```
+```
+make install
+```
+```
+ldconfig -i
+```
+```
+cd ..
+```
+## Installation of trx
+```
+git clone git://git.osmocom.org/osmocom-bb.git -b fixeria/trx trx
+```
+```
+cd trx/src/
+```
+```
+git checkout 620fe497efa492feff4550e336cc3f8167715936
+```
+```
+nano target/firmware/Makefile
+```
+#uncomment CFLAGS += -DCONFIG_TX_ENABLE
+#ctrl+o return ctrl+x
+```
+make -j4 HOST_layer23_CONFARGS=--enable-transceiver -e CROSS_TOOL_PREFIX=arm-none-eabi-
+```
+```
+cd ..
+```
+
 
 
 
