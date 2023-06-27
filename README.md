@@ -88,6 +88,29 @@ ldconfig -i
 ```
 cd .. 
 ```
+## Installation of osmocom-bb
+```
+git clone git://git.osmocom.org/osmocom-bb.git
+```
+```
+cd osmocom-bb/
+```
+```
+git checkout 4f677e6ba8434dab376495cd996d140548fa6e93
+```
+```
+cd src
+```
+"#uncomment CFLAGS += -DCONFIG_TX_ENABLE in :"
+```
+nano target/firmware/Makefile
+```
+```
+make -j4 -e CROSS_TOOL_PREFIX=arm-none-eabi-
+```
+```
+cd ../..
+```
 
 
 
