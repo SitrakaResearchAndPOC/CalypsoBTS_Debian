@@ -328,6 +328,9 @@ cd /home/debian/osmocom/trx/src/host/layer23/src/transceiver/ && \
 wget https://raw.githubusercontent.com/SitrakaResearchAndPOC/CalypsoBTS_Debian/main/osmo-bts.cfg
 ``` 
 * config file of open-bsc
+``` 
+wget https://raw.githubusercontent.com/SitrakaResearchAndPOC/CalypsoBTS_Debian/main/open-bsc.cfg
+``` 
 * config  hlr.sqlite3
 ```
 touch hlr.sqlite3
