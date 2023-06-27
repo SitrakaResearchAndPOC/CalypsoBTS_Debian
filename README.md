@@ -67,6 +67,7 @@ git clone git://git.osmocom.org/libosmocore.git
 ```
 cd libosmocore/
 ```
+```
 git checkout cf70aa0c40c574c32b832454f725cc37459c5d8d
 ```
 ```
