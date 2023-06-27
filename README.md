@@ -325,10 +325,40 @@ cd /home/debian/osmocom/trx/src/host/layer23/src/transceiver/ && \
 ## Before launching next shell, preparing configs
 * config file of osmo-bts
 ```
-wget 
+wget https://raw.githubusercontent.com/SitrakaResearchAndPOC/CalypsoBTS_Debian/main/osmo-bts.cfg
 ``` 
 * config file of open-bsc
-* config  
+* config  hlr.sqlite3
+```
+touch hlr.sqlite3
+```
+##
+## shell 4
+```
+cd /home/debian/osmocom/.osmocom/ && \
+osmo-nitb -c open-bsc.cfg -l hlr.sqlite3 -P -C --debug=DRLL:DCC:DMM:DRR:DRSL:DNM
+```
+##
+## shell 5
+```
+cd /home/debian/osmocom/.osmocom/ && \
+osmo-bts-trx -c osmo-bts.cfg --debug DRSL:DOML:DLAPDM
+```
+##
+## Code for managing BTS
+```
+telnet localhost 4242
+```
+```
+telnet localhost 4241
+```
+##
+## Code getting number MSISDN or extension on the network
+```
+*#100#
+```
+
+
 
 
 
