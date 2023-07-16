@@ -338,13 +338,11 @@ touch hlr.sqlite3
 ##
 ## shell 4
 ```
-cd /home/debian/osmocom/.osmocom/ && \
 osmo-nitb -c open-bsc.cfg -l hlr.sqlite3 -P -C --debug=DRLL:DCC:DMM:DRR:DRSL:DNM
 ```
 ##
 ## shell 5
 ```
-cd /home/debian/osmocom/.osmocom/ && \
 osmo-bts-trx -c osmo-bts.cfg --debug DRSL:DOML:DLAPDM
 ```
 ##
