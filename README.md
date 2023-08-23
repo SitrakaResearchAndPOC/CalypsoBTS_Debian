@@ -2,7 +2,7 @@
 ## Demonstration : 
 * [demos](https://youtu.be/_nGVeG_76W8)
 ## OS : 
-* Debian 10.x (possible avec debin 8.x)
+* Debian 13.x (possible avec debin 10.x)
 * GUI choice Gnome
 
 ## Remark :
@@ -160,7 +160,7 @@ nano target/firmware/Makefile
 make -j4 HOST_layer23_CONFARGS=--enable-transceiver -e CROSS_TOOL_PREFIX=arm-none-eabi-
 ```
 ```
-cd ..
+cd ../..
 ```
 ## Installation of libosmo-abis
 ```
